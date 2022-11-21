@@ -1,0 +1,35 @@
+// const user=User.build();
+// console.log(user.username);
+// user.username='katrina kaif';
+// return User.create({username:'vicky kaushal',password:'kat',age:21,withCodeRocks:false});
+
+//.then((data)=>{
+//     console.log(data.toJSON());
+//     console.log("user added to database")
+//     data.username='tushar m';
+//     data.age=45;
+
+//     return data.destroy();
+//      return data.save({field:['age']});
+// })
+// .then((data)=>{
+//     console.log("User Age decrementing");
+//     data.decrement({age:2});
+//     console.log(data.toJSON());
+    
+//  })
+
+
+
+
+
+
+
+// console.log(sequelize.models.user);
+
+// sequelize.sync({force:true}).then(()=>{
+//     console.log("Connection Successfull");
+// }).catch((err)=>{
+// console.log("Error connecting to database");
+// });
+// console.log("Another task")
