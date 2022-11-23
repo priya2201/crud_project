@@ -28,15 +28,26 @@ get(){
     password:{
 type:DataTypes.STRING,
 defaultValue:null,
-set(value){
-    const salt=bcrypt.genSaltSync(12);
-    const hash=bcrypt.hashSync(value,salt);
-    this.setDataValue('password',hash);
-}
+// set(value){
+//     const salt=bcrypt.genSaltSync(12);
+//     const hash=bcrypt.hashSync(value,salt);
+//     this.setDataValue('password',hash);
+// }
     },
     age:{
 type:DataTypes.INTEGER,
-defaultValue:21
+defaultValue:21,
+validate:{
+    // isOldEnough(value){
+    //     if(value < 21){
+    //         throw new Error('Too young');
+    //     }
+    // }
+    isNumeric:{
+        msg:'You must enter a number for age'
+    }
+    
+}
     },
 
 withCodeRocks:{
@@ -61,12 +72,47 @@ aboutUser:{
         return `${this.username} ${this.description}`;
     }
 
+},
+email:{
+    type:DataTypes.STRING,
+    unique:true,
+    allowNull:true,
+    // validate:{
+    //     // isEmail:true
+    //     isIn:['m@soccer.com','m@soccer.org']
+    // }
+    validate:{
+        // isIn:{
+        //     args:['m@soccer.com','m@soccer.org'],
+        //     msg:'The provided email must be one of the following'
+        // },
+        myEmailValidator(value){
+            if(value === null){
+                throw new Error('Please enter an email')
+            }
+        }
+    }
 }
 },
 {
     freezeTableName:true,
-    timestamps:false
+    timestamps:true,
+    validate:{
+        userpassmatch() {
+            if(this.username === this.password){
+            throw new Error('Password cannot be your username');
+            }
+        else{
+            console.log('go ahead');
+        }
+    }
+},
+paranoid:true,
+deletedAt:'timedestroyed'
 });
+function myfun(){
+    console.log('Running sql statement')
+}
 User.sync({alter:true}).then(()=>{
 console.log("Table and Model synced Successfully")
 // return User.findAll({where:{password: 1234 ,username:'john hadley'}});
@@ -167,16 +213,72 @@ console.log("Table and Model synced Successfully")
 //     description:'my desc hellooo'
 
 // })
-return User.findOne({where:{username:'shani'}});
+// return User.findOne({where:{username:'shani'}});
+// return User.create({
+//     username:'hello',
+//     password:'minepassword',
+//     email:'hiee@gmail.com'
+// });
+// const user=User.build({email:'hello'});
+// return user.validate();
+// return User.create({
+//     username:'pia1',
+//     password:'pia1',
+//     age:33
+    
+// })
+//return sequelize.query(`update user set age=54 where username='shani'`)
+//return sequelize.query(`select * from user`,{type:Sequelize.QueryTypes.select});
+return User.findOne({paranoid:false})
+//return sequelize.query(`update user set age=87 where username='vicky kaushal'`,{type:Sequelize.QueryTypes.update})
+// return sequelize.query(`select * from user limit 2`,{model:User,plain:true})
+//return sequelize.query(`select * from user limit 2`,{logging:myfun})
+// return sequelize.query(`select * from user where username= :username`,{
+//     replacements:{username:'katrina kaif'},
+// })
+// return sequelize.query(`select * from user where username IN (:username)`,{
+//     replacements:{username:['katrina kaif','john hadley']},
+// })
+// return sequelize.query(`select * from user where username like :username`,{
+//     replacements:{username:'%katrina kaif%'},
+// })
+// return User.destroy({
+//     where:{
+//         user_id:2,
+        
+//     },
+//     force:true
+// });
+// return User.restore({
+//     where:{
+//         user_id:2
+//     }
+// })
+
+// return User.destroy({
+//     where:{
+//         user_id:1
+//     }
+// })
+return User.destroy({
+    where:{
+        user_id:3
+    },
+    paranoid:false
+})
 }).then((data) =>{
     //data.forEach((element )=>{
     //    console.log(element.toJSON());
     //});
    //console.log(data.toJSON());
+  console.log(data);
+//   [result,metadata]=data;
+//   console.log(result);
+//   console.log(metadata);
     // console.log(data.username);
     // console.log(data.password);
-    console.log(data.description);
-    console.log(data.aboutUser);
+    //console.log(data.description);
+    //console.log(data.aboutUser);
     // const[result,created]=data;
     // console.log(created);
     // const{count,rows}=data;

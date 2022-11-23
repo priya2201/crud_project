@@ -1,0 +1,88 @@
+const { Sequelize, HasOne } = require('sequelize');
+const Sequeliz=require('sequelize');
+const {DataTypes,Op}=Sequelize;
+const sequelize=new Sequelize('sequelize_video','root','rootpassword',{
+    dialect:'mysql'
+});
+const Country=sequelize.define('country',{
+    countryName:{
+        type:DataTypes.STRING,
+        unique:true
+    }
+},{
+    timestamps:false
+});
+
+const Capital=sequelize.define('capital',{
+    capitalName:{
+        type:DataTypes.STRING,
+        unique:true
+    }
+},{
+    timestamps:false
+});
+
+Country.hasOne(Capital);
+
+
+sequelize.sync({alter:true}).then(()=>{
+// Country.bulkCreate([
+//     {
+//         countryName:'spain'
+//     },{
+//         countryName:'france'
+//     },{
+//         countryName:'germany'
+//     },{
+//         countryName:'england'
+//     }
+// ]);
+// Capital.bulkCreate([
+//     {
+//         capitalName:'london'
+//     },{
+//         capitalName:'madrid'
+//     },{
+//         capitalName:'paris'
+//     },{
+//         capitalName:'berlin'
+//     }
+// ])
+// set
+// return Capital.findOne({where:{capitalName:'madrid'}})
+// }).then((data)=>{
+//     capital = data;
+//     return Country.findOne({where:{
+//         countryName:'spain'
+//     }})
+// }).then((data)=>{
+//     country=data;
+//     country.setCapital(capital);
+
+//get
+// return Country.findOne({where:{
+//     countryName:'spain'
+// }})
+
+// }).then((data)=>{
+//     country=data;
+//     return country.getCapital();
+// }).then((data)=>{
+//     console.log(data.toJSON());
+
+
+return Country.create({
+    countryName:'ufa'
+});
+}).then((data)=>{
+    country=data;
+    return country.CreateCapital(
+        {
+            capitalName:'washing ton, D.C.'
+        }
+    )
+}).then((data)=>{
+     console.log(data.toJSON());
+     }).catch((err)=>{
+    console.log(err);
+});
