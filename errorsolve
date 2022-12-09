@@ -1,0 +1,151 @@
+PS C:\orm_project> node indexenv
+No env file present for the current environment:  undefined
+dev
+localhost
+root
+root
+PS C:\orm_project> NODE_ENV=staging node indexenv.js
+NODE_ENV=staging : The term 'NODE_ENV=staging' is not recognized as     
+the name of a cmdlet, function, script file, or operable program.       
+Check the spelling of the name, or if a path was included, verify that  
+the path is correct and try again.
+At line:1 char:1
++ NODE_ENV=staging node indexenv.js
+    + CategoryInfo          : ObjectNotFound: (NODE_ENV=staging:String  
+   ) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\orm_project> NODE_ENV=staging node indexenv.js
+NODE_ENV=staging : The term 'NODE_ENV=staging' is not recognized as     
+the name of a cmdlet, function, script file, or operable program.       
+Check the spelling of the name, or if a path was included, verify that  
+the path is correct and try again.
+At line:1 char:1
++ NODE_ENV=staging node indexenv.js
+    + CategoryInfo          : ObjectNotFound: (NODE_ENV=staging:String  
+   ) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\orm_project> NODE_ENV=staging node indexenv.js
+NODE_ENV=staging : The term 'NODE_ENV=staging' is not recognized as     
+the name of a cmdlet, function, script file, or operable program.       
+Check the spelling of the name, or if a path was included, verify that  
+the path is correct and try again.
+At line:1 char:1
++ NODE_ENV=staging node indexenv.js
+    + CategoryInfo          : ObjectNotFound: (NODE_ENV=staging:String  
+   ) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\orm_project> NODE_ENV=staging node indexenv.js
+NODE_ENV=staging : The term 'NODE_ENV=staging' is not recognized as     
+the name of a cmdlet, function, script file, or operable program.       
+Check the spelling of the name, or if a path was included, verify that  
+the path is correct and try again.
+At line:1 char:1
++ NODE_ENV=staging node indexenv.js
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (NODE_ENV=staging:String  
+   ) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\orm_project> cmd
+Microsoft Windows [Version 10.0.19044.2251]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\orm_project>NODE_ENV=staging node indexenv.js
+'NODE_ENV' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>APP_ENV=staging node indexenv.js  
+'APP_ENV' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>node indexenv
+staging
+custom environment app
+localhost
+user
+pass
+
+C:\orm_project>node indexenv
+No env file present for the current environment:  undefined 
+ Falling back to .env config
+dev
+undefined
+localhost
+root
+root
+
+C:\orm_project>NODE_ENV=staging node indexenv
+'NODE_ENV' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>APP_ENV=staging node indexenv  
+'APP_ENV' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>node indexenv
+No env file present for the current environment:  undefined 
+ Falling back to .env config
+dev
+undefined
+localhost
+root
+root
+
+C:\orm_project>npm i --save-dev "cross-env"   
+
+added 7 packages, and audited 100 packages in 1s
+
+5 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\orm_project>node indexenv
+No env file present for the current environment:  undefined 
+ Falling back to .env config
+dev
+undefined
+localhost
+root
+root
+
+C:\orm_project>APP_ENV=staging node indexenv
+'APP_ENV' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>NODE_ENV=staging node indexenv
+'NODE_ENV' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>cross-env NODE_ENV=development node indexenv.js
+'cross-env' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>cross-env NODE_ENV=development node indexenv.js
+'cross-env' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\orm_project>npm i -g win-node-env
+
+added 1 package, and audited 2 packages in 2s
+
+found 0 vulnerabilities
+
+C:\orm_project>node indexenv                  
+No env file present for the current environment:  undefined 
+ Falling back to .env config
+dev
+undefined
+localhost
+root
+root
+
+C:\orm_project>NODE_ENV=staging node indexenv
+staging
+custom environment app
+localhost
+user
+pass

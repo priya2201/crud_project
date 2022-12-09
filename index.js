@@ -371,16 +371,35 @@ Info.sync({force:true}).then(()=>{
 //     return Info.findAll({attributes:['username',[sequelize.fn('COUNT',sequelize.col('mobile')),'SUM_mobile']],
 // group:'username'})
 // return Info.findAll()
+
     .then((data)=>{
         data.forEach((element)=>{
             console.log(element.toJSON())
         });
        
-//            // console.log(data);
+//        
+    // console.log(data);
         
     })
 }).catch((err)=>{
     console.log(err)
 })
 
+console.log('hi');
+setTimeout(()=>{
+    console.log("after 2 secs");
+},2000)
+console.log('end')
 
+let i = 10;
+{
+    let i=0;
+}
+console.log(i);
+
+var k=10;
+function test(){
+    console.log(i);
+    var k=30;
+}
+test()
