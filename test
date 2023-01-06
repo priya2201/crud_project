@@ -1,0 +1,36 @@
+const arr = [4, 56, 5, 3, 34, 37, 89, 57, 98];
+const sortWithReduce = arr => {
+    return arr.reduce((acc, val) => {
+        let ind = 0;
+        while (ind < arr.length && val < arr[ind]) {
+            ind++;
+        }
+        acc.splice(ind, 0, val);
+        return acc;
+    }, []);
+};
+console.log(sortWithReduce(arr));
+
+
+
+let palindrome,num=121
+for(i=0;i<num.length;i++){
+    palindrome=num%i
+
+}
+ palindrome=num/i
+
+
+let str=123
+// if(str.length>0){
+//     console.log('string length is greater than o')
+// }
+// else{
+//     console.log('string length must be greater than one')
+// }
+for(i=0;i<str.length;i++){
+    str=str%i
+}
+
+
+

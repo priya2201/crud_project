@@ -107,3 +107,4 @@ return Student.findAll({
 }).catch((err)=>{
     console.log(err);
 })
+

@@ -1,5 +1,5 @@
-const { Sequelize, HasOne } = require('sequelize');
-const Sequeliz=require('sequelize');
+//const { Sequelize } = require('sequelize');
+const Sequelize=require('sequelize');
 const {DataTypes,Op}=Sequelize;
 const sequelize=new Sequelize('sequelize_video','root','rootpassword',{
     dialect:'mysql'
@@ -22,7 +22,16 @@ const Capital=sequelize.define('capital',{
     timestamps:false
 });
 
-Country.hasOne(Capital);
+Country.hasOne(Capital,{
+    onDelete:'CASCADE'
+});
+Capital.belongsTo(Country),{
+    onDelete:'CASCADE'
+
+};
+
+let country,capital;
+
 
 
 sequelize.sync({alter:true}).then(()=>{
@@ -48,7 +57,7 @@ sequelize.sync({alter:true}).then(()=>{
 //         capitalName:'berlin'
 //     }
 // ])
-// set
+// seting data  in mysql like update capitals set countryid=? where id=?
 // return Capital.findOne({where:{capitalName:'madrid'}})
 // }).then((data)=>{
 //     capital = data;
@@ -69,20 +78,77 @@ sequelize.sync({alter:true}).then(()=>{
 //     return country.getCapital();
 // }).then((data)=>{
 //     console.log(data.toJSON());
+//setting data again
+// return Capital.findOne({
+//     where:{
+//         capitalName:'paris'
+//     }
 
+// }).then((data)=>{
+//  capital=data;
+//  return Country.findOne({
+//     where:{
+//         countryName:'france'
+//     }
+//  });
+// }).then((data)=>{
+//     country=data;
+//     country.setCapital(capital);
+//  })
 
-return Country.create({
-    countryName:'ufa'
-});
-}).then((data)=>{
-    country=data;
-    return country.CreateCapital(
-        {
-            capitalName:'washing ton, D.C.'
-        }
-    )
-}).then((data)=>{
-     console.log(data.toJSON());
-     }).catch((err)=>{
+ // get capital
+//  return Country.findOne({
+//     where:{
+//         countryName:'france'
+//     }
+// });
+//  }).
+// then((data)=>{
+// country=data;
+// return country.getCapital();
+// }).then((data)=>{
+//     console.log(data.toJSON())
+// })
+// return Country.create({
+//     countryName:'India'
+// });
+// }).then((data)=>{
+//     country = data;
+//     return country.createCapital({
+//         capitalName:'Delhi'
+//     });
+
+// }).then((data)=>{
+//     console.log(data.toJSON());
+ })
+//  return Country.findOne({
+//     where:{
+//         countryName:'germany'
+//     }
+ 
+// }).then((data)=>{
+//     country=data;
+//     return Capital.findOne({
+//         where:{
+//             capitalName:'berlin'
+//         }
+//     });
+
+// }).then((data)=>{
+//     capital=data;
+//     return capital.setCountry(country)
+// //console.log(data.toJSON());
+// }).then((data)=>{
+//     console.log(data.toJSON());
+// })
+return Country.destroy({
+    where:{
+        
+    }
+})
+.catch((err)=>{
     console.log(err);
 });
+
+
+

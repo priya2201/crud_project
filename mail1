@@ -1,0 +1,30 @@
+const nodemailer=require('nodemailer');
+
+    var transporter=nodemailer.createTransport({
+        service:'gmail',
+        auth:{
+            user:'priyamurpani99@gmail.com',
+            pass:'fzsglnsoybyybjzl'
+        }
+    });
+    var mailOptions={
+        from:'priyamurpani99@gmail.com',
+        to:'priyamurpani99@gmail.com, priyamurpani@nimapinfotech.com',
+        subject:'node js working',
+        text:'hello world',
+        html: "Hello,<br/><table border='1' style='border-collapse:collapse;'><thead><tr><th>entete 1</th><th>entete 2</th><th>entete 3</th></tr></thead><tbody><tr><td>data 1</td><td>data 2</td><td>data 3</td></tr></tbody></table>",
+    attachments:[{
+        filename:'download.jpg',
+        path:'./download.jpg'
+    }]  }
+    console.log(mailOptions)
+    transporter.sendMail(mailOptions,function(err,resp){
+        if(err){
+            console.log('Email could not send due to error:'+ err);
+        }
+        else{
+            console.log('email sent succesfully');
+            console.log('mail sent');
+        }
+    })
+

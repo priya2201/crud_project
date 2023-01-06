@@ -1,0 +1,33 @@
+app.post('/',function(req,res){
+    const transporter=nodemailer.createTransport({
+        service:'gmail',
+        auth:{
+            user:'',
+            pass:''
+
+        }
+    });
+    var subject=req.body.subject
+    var email=req.body.email;
+    const cc=[" "," ",""]
+    
+    var data=[
+        req.body.to,
+        req.body.subject,
+        req.body.message
+    ]
+    const mailOptions={
+        from:req.body.email,
+        subject:req.body.subject,
+        to:req.body.to,
+        text:req.body.message
+    };
+    transporter.sendMail(mailOptions,function(err,info){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("Email sent"+ info.response)
+        }
+    });
+})
